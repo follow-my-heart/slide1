@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Material Design风格内容幻灯片代码 - 站长素材</title>
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+<div class="center">
+	<div class="slider" data-pos="0">
+		<div class="_slides">
+			<div class="_slide"></div>
+			<div class="_slide"></div>
+			<div class="_slide"></div>
+			
+		</div>
+		<div class="_dots">
+			<a href="#" class="_indicator"></a>
+			<a href="#" class="_dot" data-pos="1"></a>
+			<a href="#" class="_dot" data-pos="2"></a>
+			<a href="#" class="_dot" data-pos="3"></a>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	'use strict';
+	var dots = 3;
+	var sliderElem = document.querySelector('.slider');
+	var dotElems = sliderElem.querySelectorAll('._dot');
+	var indicatorElem = sliderElem.querySelector('._indicator');
+
+	Array.prototype.forEach.call(dotElems, function (dotElem) {
+
+		dotElem.addEventListener('click', function (e) {
+
+			var currentPos = parseInt(sliderElem.getAttribute('data-pos'));
+			var newPos = parseInt(dotElem.getAttribute('data-pos'));
+
+			var newDirection = newPos > currentPos ? 'right' : 'left';
+			var currentDirection = newPos < currentPos ? 'right' : 'left';
+
+			indicatorElem.classList.remove('_indicator--' + currentDirection);
+			indicatorElem.classList.add('_indicator--' + newDirection);
+			sliderElem.setAttribute('data-pos', newPos);
+		});
+	});
+</script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+
+</div>
+</body>
+</html>
